@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Competitive Math Club at SMC</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="assets/cmc-logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #14181A;
+    --fg: #F2F1E8;
+    --accent: #7FC49B;
+    --accent-dark: #4E9068;
+    --watermark: #202D26;
+    --card-bg: #F3F1EA;
+    --card-fg: #14181A;
+    --card-label: #47805C;
+    --cta-bg: #3E6F50;
+    --cta-fg: #F7F6EF;
+    --cta-label: #CFE3D5;
+    --footer: #5D6B5F;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+  }
+
+  body {
+    min-height: 100vh;
+    color: var(--fg);
+    font-family: 'Space Grotesk', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 56px 22px 32px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { color: var(--fg); }
+
+  #watermark {
+    position: fixed;
+    inset: -70px -300px auto -300px;
+    width: calc(100vw + 600px);
+    height: calc(100vh + 140px);
+    overflow: hidden;
+    pointer-events: none;
+    display: flex;
+    flex-direction: column;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 30px;
+    line-height: 1.16;
+    letter-spacing: -1px;
+    white-space: nowrap;
+    color: var(--watermark);
+    word-spacing: 4px;
+  }
+
+  .hero {
+    position: relative;
+    width: 100%;
+    max-width: 440px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .hero .eyebrow {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 3px;
+    font-weight: 700;
+    color: var(--accent);
+  }
+
+  .hero h1 {
+    margin: 16px 0 0;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 58px;
+    line-height: 0.86;
+    letter-spacing: -2.6px;
+  }
+
+  .hero h1 span { color: var(--accent-dark); display: block; }
+
+  .links {
+    position: relative;
+    margin-top: 40px;
+    width: 100%;
+    max-width: 440px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .link-card {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    min-height: 76px;
+    background: var(--card-bg);
+    color: var(--card-fg);
+    padding: 18px 22px;
+    border-radius: 6px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.15s ease;
+  }
+  .link-card:hover { transform: scale(1.015); }
+
+  .link-card .title {
+    font-size: 25px;
+    font-weight: 600;
+    line-height: 1.05;
+    letter-spacing: -0.8px;
+    color: inherit;
+  }
+
+  .link-card .label {
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    color: var(--card-label);
+  }
+
+  .link-card.cta {
+    background: var(--cta-bg);
+    color: var(--cta-fg);
+  }
+  .link-card.cta .label { color: var(--cta-label); }
+
+  footer {
+    margin-top: auto;
+    padding-top: 48px;
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    color: var(--footer);
+  }
+</style>
+</head>
+<body>
+
+  <div id="watermark" aria-hidden="true"></div>
+
+  <div class="hero">
+    <div class="eyebrow">SANTA&nbsp;MONICA&nbsp;COLLEGE</div>
+    <h1>Competitive<span>Math Club</span></h1>
+  </div>
+
+  <div class="links">
+    <!-- TODO: 填入正式連結後移除 # -->
+    <a class="link-card" href="#" target="_blank" rel="noopener">
+      <div class="title">Follow on Instagram</div>
+      <div class="label">MEETING&nbsp;REMINDERS&nbsp;AND&nbsp;MORE</div>
+    </a>
+
+    <a class="link-card" href="#" target="_blank" rel="noopener">
+      <div class="title">Join the Discord</div>
+      <div class="label">THE&nbsp;CLUB&nbsp;BETWEEN&nbsp;MEETINGS</div>
+    </a>
+
+    <a class="link-card cta" href="#" target="_blank" rel="noopener">
+      <div class="title">Interest Form</div>
+      <div class="label">TELL&nbsp;US&nbsp;YOU&nbsp;ARE&nbsp;COMING</div>
+    </a>
+  </div>
+
+  <footer>@competitive_math_club_at_smc</footer>
+
+  <script>
+    // 產生背景浮水印文字，重複到蓋滿整個可視高度
+    const watermark = document.getElementById('watermark');
+    const offsets = [0, -150, -60, -250, -110, -200, -30, -180, -90, -230];
+    const phrase = Array(16).fill('Competitive Math Club').join(' \u00b7 ') + ' \u00b7';
+    const rows = Math.ceil((window.innerHeight + 140) / 35) + 2;
+    for (let i = 0; i < rows; i++) {
+      const row = document.createElement('div');
+      row.style.marginLeft = offsets[i % offsets.length] + 'px';
+      row.textContent = phrase;
+      watermark.appendChild(row);
+    }
+  </script>
+
+</body>
+</html>
