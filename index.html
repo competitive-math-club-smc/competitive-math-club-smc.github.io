@@ -48,12 +48,15 @@
   a:hover:not(.link-card) { color: var(--fg); }
 
   #watermark {
-    position: fixed;
-    inset: -70px -300px auto -300px;
-    width: calc(100vw + 600px);
-    height: calc(100vh + 140px);
+    position: absolute;
+    top: -40px;
+    left: -300px;
+    width: calc(100% + 600px);
+    height: calc(100% + 80px);
     overflow: hidden;
     pointer-events: none;
+    z-index: -1;
+    opacity: 0.6;
     display: flex;
     flex-direction: column;
     font-weight: 700;
@@ -183,11 +186,12 @@
   <footer>@competitive_math_club_at_smc</footer>
 
   <script>
-    // 產生背景浮水印文字，重複到蓋滿整個可視高度
+    // 產生背景浮水印文字，重複到蓋滿整個頁面高度（含捲動範圍）
     const watermark = document.getElementById('watermark');
     const offsets = [0, -150, -60, -250, -110, -200, -30, -180, -90, -230];
     const phrase = Array(16).fill('Competitive Math Club').join(' \u00b7 ') + ' \u00b7';
-    const rows = Math.ceil((window.innerHeight + 140) / 35) + 2;
+    const pageHeight = document.body.scrollHeight;
+    const rows = Math.ceil((pageHeight + 80) / 35) + 2;
     for (let i = 0; i < rows; i++) {
       const row = document.createElement('div');
       row.style.marginLeft = offsets[i % offsets.length] + 'px';
